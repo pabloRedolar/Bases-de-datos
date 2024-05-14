@@ -12,7 +12,7 @@ DECLARE cursor1 CURSOR FOR SELECT r.id_pista,u.nombre,u.email,r.fecha_reserva,r.
 
 DECLARE CONTINUE HANDLER FOR NOT FOUND SET fin=1;
 
-CREATE TABLE IF NOT EXISTS estadisticas_pistas(id_stat INT AUTO_INCREMENT, id_pista INT unsigned, nombre_usuario VARCHAR(50), email_usuario VARCHAR(50), fecha_reserva DATE, fecha_uso DATE, precio_pista INT,PRIMARY KEY(id_stat,id_pista),FOREIGN KEY (id_pista) REFERENCES pistas (id));
+CREATE TABLE IF NOT EXISTS estadisticas_pistas(id_stat INT AUTO_INCREMENT, id_pista INT unsigned, nombre_usuario VARCHAR(50), email_usuario VARCHAR(50), fecha_reserva DATE, fecha_uso DATE, precio_pista INT, PRIMARY KEY(id_stat,id_pista), FOREIGN KEY (id_pista) REFERENCES pistas (id));
 
 OPEN cursor1;
 myloop:LOOP
@@ -20,6 +20,7 @@ myloop:LOOP
     IF (fin = 1) THEN LEAVE myloop;
     END IF;
     INSERT INTO estadisticas_pistas (id_pista,nombre_usuario,email_usuario,fecha_reserva,fecha_uso,precio_pista) VALUES (c_pista,c_nombre,c_email,c_fecha_reserva,c_fecha_uso,c_precio);
+	
 END LOOP myloop;
 CLOSE cursor1;
 END//
