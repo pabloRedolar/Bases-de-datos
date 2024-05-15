@@ -4,7 +4,7 @@ DELIMITER //
 
 CREATE TRIGGER eliminarPistaCerradaPublico
  
-BEFORE DELETE ON pistas_abiertas FOR EACH ROW
+AFTER DELETE ON pistas_abiertas FOR EACH ROW
 
 BEGIN
 
