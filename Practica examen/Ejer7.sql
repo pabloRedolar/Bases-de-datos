@@ -8,11 +8,11 @@ CREATE PROCEDURE calculaIMC (IN peso_param FLOAT, IN altura_param INT, OUT imc F
 
 BEGIN
 
-DECLARE altura_m INT;
+DECLARE altura_m FLOAT(;
 
-SET altura_m = altura_param / 100;
+SET altura_m = (altura_param / 100);
 
-SET imc = peso_param / (altura_m*altura_m);
+SET imc = (peso_param / (altura_m*altura_m));
 
 END //
 
